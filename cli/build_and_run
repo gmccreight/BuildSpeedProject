@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This script *appears* to build and run the project in *exactly* the same way
+# that Android Studio does.
+
+if [[ `pwd` =~ cli ]]; then
+  echo please run from the project directory
+  exit 1
+fi
+
+./gradlew --daemon :BuildSpeed:assembleDebug
+adb install -r BuildSpeed/build/apk/buildspeed-debug-unaligned.apk
+adb shell 'am start -a android.intent.action.MAIN \
+  -n com.micromobs.buildspeed/com.micromobs.buildspeed.MainActivity'

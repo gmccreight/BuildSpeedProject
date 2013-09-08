@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# This script replaces the "built 2013_09_08_10_01_32" string in the Android
+# project with the current datetime.  It can be used to ensure that there is
+# something *new* for the compile scripts to have to compile (and also to make
+# it obvious to the developer when the file was updated)
+
+if [[ `pwd` =~ cli ]]; then
+  echo please run from the project directory
+  exit 1
+fi
+
+date_str=`date +"%Y_%m_%d_%H_%M_%S"`
+sed -i '' -e "s/built.*\</built $date_str</" \
+  BuildSpeed/src/main/res/values/strings.xml
