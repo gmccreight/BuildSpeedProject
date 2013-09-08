@@ -1,0 +1,12 @@
+# Mac-specific stuff
+.DS_Store
+
+local.properties
+
+# Gradle
+.gradle
+build
+
+# Intellij project files
+.idea/workspace.xml
+out/
